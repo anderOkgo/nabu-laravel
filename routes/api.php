@@ -21,16 +21,22 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group
 (
     ['prefix' => 'auth'], function ()
-{
-    Route::post('login', 'AuthController@login');
-    Route::group
-    (
-        ['middleware' => 'auth:api'], function()
     {
-        Route::post('signup', 'AuthController@signUp');
-        Route::get('logout', 'AuthController@logout');
-        Route::get('user', 'AuthController@user');
+        Route::post('login', 'AuthController@login');
+        Route::group
+        (
+            ['middleware' => 'auth:api'], function()
+        {
+            Route::get('logout', 'AuthController@logout');
+            Route::get('user', 'AuthController@user');
+
+            Route::get('index', 'AuthController@index');
+            Route::get('show/{user}', 'AuthController@show');
+            Route::post('store', 'AuthController@store');
+            Route::put('update/{user}', 'AuthController@update');
+            Route::delete('delete/{user}', 'AuthController@delete');
+        }
+        );
     }
-    );
-}
 );
+

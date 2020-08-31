@@ -4,33 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use Auth;
 use Carbon\Carbon;
 
 class AuthController extends Controller
 {
-    /**
-     * Registro de usuario
-     */
-    public function signUp(Request $request)
-    {
-        $request->validate
-        ([
-            'name'      => 'required|string',
-            'email'     => 'required|string|email|unique:users',
-            'password'  => 'required|string'
-        ]);
-
-        User::create
-        ([
-            'name'      => $request->name,
-            'email'     => $request->email,
-            'password'  => bcrypt($request->password)
-        ]);
-
-        return response()->json(['message' => 'Successfully created user!'], 201);
-    }
-
     /**
      * Inicio de sesión y creación de token
      */
@@ -84,5 +61,56 @@ class AuthController extends Controller
     public function user(Request $request)
     {
         return response()->json($request->user());
+    }
+
+    public function index()
+    {
+        return User::all();
+    }
+
+    public function show(User $user)
+    {
+        return $user;
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate
+        ([
+            'name'      => 'required|string',
+            'email'     => 'required|string|email|unique:users',
+            'password'  => 'required|string'
+        ]);
+
+        User::create
+        ([
+            'name'      => $request->name,
+            'email'     => $request->email,
+            'password'  => bcrypt($request->password)
+        ]);
+
+        return response()->json(['message' => 'Successfully created user!'], 201);
+
+        /*$user = User::create($request->all());
+        return response()->json($user, 201);*/
+    }
+
+    public function update(Request $request, User $user)
+    {
+        $user->update
+        ([
+            'name'      => $request->name,
+            'email'     => $request->email,
+            'password'  => bcrypt($request->password)
+        ]);
+
+        return response()->json($user, 200);
+    }
+
+    public function delete(User $user)
+    {
+        $user->delete();
+
+        return response()->json(null, 204);
     }
 }
