@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Carbon\Carbon;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -21,6 +22,8 @@ class AuthController extends Controller
         ]);
 
         $credentials = request(['email', 'password']);
+
+        //print_r($credentials);exit();
 
         if (!Auth::attempt($credentials))
         {
