@@ -27,6 +27,8 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
         Passport::routes();
 
-        //
+        Gate::before(function ($user, $role){
+            return $user->tieneRole()->contains($role);
+        });
     }
 }
