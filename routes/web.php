@@ -19,3 +19,19 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('usuarios', 'UserController')->middleware('auth');
+Route::resource('roles ', 'RoleController');
+
+
+Route::get('bikes', 'BikeController@index');
+Route::get('bikes/{id}/edit', 'BikeController@edit');
+Route::post('bikes/store', 'BikeController@store');
+Route::get('bikes/delete/{id}', 'BikeController@destroy');
+
+Route::get('product-list', 'ProductController@index');
+Route::get('product-list/{id}/edit', 'ProductController@edit');
+Route::post('product-list/store', 'ProductController@store');
+Route::get('product-list/delete/{id}', 'ProductController@destroy');
+
+Route::resource('notas/todas', 'NotasController');
+Route::get('notas/favoritas', 'NotasController@favoritas');
+Route::get('notas/archivadas', 'NotasController@archivadas');

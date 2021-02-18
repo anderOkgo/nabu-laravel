@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserFormRequest;
 use App\User;
+use App\Role;
 use Illuminate\Support\Facades\Hash;
+use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
 {
@@ -15,7 +18,16 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        /* if($request->ajax()) {
+            $users = User::all();
+            return DataTable::of($users)
+                ->addColumn('rol', function($user) {
+                foreach($user->roles as $role) {
+                    return $role->name;
+                }
+            })
+        } */
+        $users = User::paginate(5);
         return view('usuarios.index',['users' => $users]);
     }
 
@@ -26,7 +38,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('usuarios.create');
+        $roles = Role::all();
+        return view('usuarios.create', ['roles' => $roles]);
     }
 
     /**
@@ -37,11 +50,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $usuario            = new User();
-        $usuario->name      = request('name');
-        $usuario->email     = request('email');
-        $usuario->password  = bcrypt(request('password'));
+        $usuario           = new User();
+        $usuario->name     = request('name');
+        $usuario->email    = request('email');
+        $usuario->password = bcrypt(request('password'));
         $usuario->save();
+
+        $usuario->asignarRole($request->get('rol'));
 
         return redirect('/usuarios');
     }
@@ -75,11 +90,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserFormRequest $request, $id)
     {
-        $usuario            = User::findOrFail($id);
-        $usuario->name      = $request->get('name');
-        $usuario->email     = $request->get('email');
+        $usuario        = User::findOrFail($id);
+        $usuario->name  = $request->get('name');
+        $usuario->email = $request->get('email');
 
         $usuario->update();
 

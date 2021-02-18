@@ -10,6 +10,7 @@
         <th scope="col">ID</th>
         <th scope="col">Nombre</th>
         <th scope="col">Email</th>
+        <th scope="col">Rol</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
@@ -19,6 +20,11 @@
         <th scope="row">{{$user->id}}</th>
         <td>{{$user->name}}</td>
         <td>{{$user->email}}</td>
+        <td>
+          @foreach($user->roles as $role)
+          {{$role->name}}
+          @endforeach
+        </td>
         <td>
           <form action="{{ route('usuarios.destroy', $user->id) }}" method="POST">
             <a href="{{ route('usuarios.show',$user->id) }}"><button type="button" class="btn btn-primary">ver</button></a>
@@ -32,6 +38,11 @@
       @endforeach
     </tbody>
   </table>
+  <div class="row">
+    <div class="mx-auto">
+      {{$users->links()}}
+    </div>
+  </div>
 </div>
 
 @endsection

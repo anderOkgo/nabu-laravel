@@ -16,10 +16,20 @@
           <input type="text" class="form-control" id="email" name="email" aria-describedby="emailHelp">
         </div>
         <div class="form-group">
+          <label for="rol">Rol</label>
+          <select name="rol" class="form-control">
+            <option selected disabled>Elige un rol para este usuario...</option>
+            @foreach($roles as $role)
+            <option value="{{$role->id}}">{{$role->name}}</option>
+            @endforeach
+          </select>
+        </div>
+        <div class="form-group">
           <label for="password">Password</label>
           <input type="password" class="form-control" id="password" name="password">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+        <button type="reset" class="btn btn-danger">Cancelar</button>
       </form>
     </div>
   </div>
