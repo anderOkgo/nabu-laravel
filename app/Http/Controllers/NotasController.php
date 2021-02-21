@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class NotasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('verified');
+
+    }
+    
     public function index()
     {
         return view('notas.todas.index', ['notas' => Notas::all()->where( 'user_id', auth()->id() )] );

@@ -4,45 +4,49 @@
 @section('content')
 <div class="container">
   <h2>Lista de Usuarios <a href="usuarios/create"><button type="button" class="btn btn-success float-right">Agregar</button></a></h2>
-  <table class="table">
+  <table class="table-hover data-table">
     <thead>
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Nombre</th>
         <th scope="col">Email</th>
         <th scope="col">Rol</th>
-        <th scope="col">Acciones</th>
+        <th scope="col">Imagen</th>
+        <th scope="col" width="100px" >Acciones</th>
       </tr>
     </thead>
     <tbody>
-    	@foreach($users as $user)
-      <tr>
-        <th scope="row">{{$user->id}}</th>
-        <td>{{$user->name}}</td>
-        <td>{{$user->email}}</td>
-        <td>
-          @foreach($user->roles as $role)
-          {{$role->name}}
-          @endforeach
-        </td>
-        <td>
-          <form action="{{ route('usuarios.destroy', $user->id) }}" method="POST">
-            <a href="{{ route('usuarios.show',$user->id) }}"><button type="button" class="btn btn-primary">ver</button></a>
-            <a href="{{ route('usuarios.edit',$user->id) }}"><button type="button" class="btn btn-secondary">editar</button></a>
-             @method('DELETE')
-             @CSRF
-            <button type="submit" class="btn btn-danger">eliminar</button>
-          </form>
-        </td>
-      </tr>
-      @endforeach
+    
     </tbody>
   </table>
-  <div class="row">
-    <div class="mx-auto">
-      {{$users->links()}}
-    </div>
-  </div>
 </div>
+
+@push('scripts')
+  <script>
+    //var URL = "{{ route('usuarios.index')}}";
+    /* $(document).ready( function () {
+      $.ajaxSetup({
+         headers: {
+             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+         }
+     }); */
+
+     $(function() {
+        var table = $('.data-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('usuarios.index') }}",
+            columns: [
+              { data: 'id', name: 'id'},
+              { data: 'name', name: 'name'},
+              { data: 'email', name: 'email'},
+              { data: 'rol', name: 'rol'},
+              { data: 'imagen', name: 'imagen', searchable: false},
+              { data: 'action', name: 'action', orderable: false, searchable: false},
+            ]
+         });
+     });
+  </script>
+@endpush
 
 @endsection
