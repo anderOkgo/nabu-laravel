@@ -3,6 +3,7 @@
 
 @section('content')  
 <div class="container">
+    <h2>Lista de Usuarios <a href="bikes/create"><button type="button" class="btn btn-success float-right">Agregar</button></a></h2>
  
 <table class="table table-bordered table-striped data-table" id="laravel_datatable">
    <thead>

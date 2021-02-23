@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Bike;
+use App\User;
 
 use Illuminate\Http\Request;
 
@@ -31,7 +32,8 @@ class BikeController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        return view('bikes.create', ['usuarios' => $users]);
     }
 
     /**
@@ -40,12 +42,23 @@ class BikeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserFormRequest $request)
     {
-    $productId = $request->product_id;
-    $product   =   Product::updateOrCreate(['id' => $productId],
-    ['title' => $request->title, 'product_code' => $request->product_code, 'description' => $request->description]);        
-    return Response::json($product);
+        $usuario           = new User();
+        $usuario->name     = request('name');
+        $usuario->email    = request('email');
+        $usuario->password = bcrypt(request('password'));
+        if ($request->hasFile('imagen')) {
+            $file = $request->imagen;
+            $file->move(public_path() . '/imagenes', $file->getClientOriginalName());
+            $usuario->imagen = $file->getClientOriginalName();
+        }
+        
+        $usuario->save();
+
+        $usuario->asignarRole($request->get('rol'));
+
+        return redirect('/usuarios');
     }
 
     /**
