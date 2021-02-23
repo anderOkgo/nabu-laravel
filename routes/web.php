@@ -19,13 +19,14 @@ Auth::routes(['verify' => true] );
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('usuarios', 'UserController');
-Route::resource('roles ', 'RoleController');
+Route::resource('roles', 'RoleController');
+Route::resource('bikes', 'BikeController');
 
 
-Route::get('bikes', 'BikeController@index');
+/* Route::get('bikes', 'BikeController@index');
 Route::get('bikes/{id}/edit', 'BikeController@edit');
 Route::post('bikes/store', 'BikeController@store');
-Route::get('bikes/delete/{id}', 'BikeController@destroy');
+Route::get('bikes/delete/{id}', 'BikeController@destroy'); */
 
 Route::get('product-list', 'ProductController@index');
 Route::get('product-list/{id}/edit', 'ProductController@edit');

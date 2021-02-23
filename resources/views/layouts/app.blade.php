@@ -233,7 +233,7 @@
 
                             @can('administrador')
                             <li class="nav-item">
-                                <a href="{{ url('roles')}}" class="{{ Request::path() === 'bikes' ? 'nav-link active' : 'nav-link' }}">
+                                <a href="{{ url('bikes.index')}}" class="{{ Request::path() === 'bikes' ? 'nav-link active' : 'nav-link' }}">
                                   <i class="nav-icon fas fa-bicycle"></i>
                                   <p>
                                     Bikes
@@ -242,7 +242,7 @@
                                 </a>
                                 <ul class="nav nav-treeview" >
                                   <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{url('bikes')}}" class="nav-link">
                                       <i class="far fa-circle nav-icon"></i>
                                       <p>Datos Bicicleta</p>
                                     </a>

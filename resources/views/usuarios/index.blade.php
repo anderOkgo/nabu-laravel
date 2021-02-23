@@ -24,13 +24,13 @@
 @push('scripts')
   <script>
     //var URL = "{{ route('usuarios.index')}}";
-    /* $(document).ready( function () {
+/*     $(document).ready( function () {
       $.ajaxSetup({
          headers: {
              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
          }
-     }); */
-
+     });
+    }); */
      $(function() {
         var table = $('.data-table').DataTable({
             processing: true,

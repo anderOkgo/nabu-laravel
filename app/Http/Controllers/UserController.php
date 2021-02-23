@@ -33,7 +33,7 @@ class UserController extends Controller
                         return $role->name;
                     }
                 })
-                ->addColumn('imagen', function($user){
+                ->addColumn('imagen', function($user) {
                     if(empty($user->imagen)) {
                         return '';
                     }

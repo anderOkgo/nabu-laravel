@@ -8,7 +8,7 @@
       <h2>Roles de usuarios
         @include('roles.modal')
       </h2>
-      <table class="table">
+      <table class="table table-role">
         <thead>
           <tr>
             <th scope="col">ID</th>
@@ -27,5 +27,16 @@
     </div>
   </div>
 </div>
+
+@push('scripts')
+  <script>
+    
+
+    $(function() {
+        var table = $('.table-role').DataTable();
+            
+     });
+  </script>
+@endpush
 
 @endsection

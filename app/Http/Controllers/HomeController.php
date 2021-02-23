@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Role;
 use App\Notas;
+use App\Bike;
 
 class HomeController extends Controller
 {
@@ -31,6 +32,7 @@ class HomeController extends Controller
         $count_users  = User::count();
         $count_roles = Role::count();
         $count_notas  = Notas::count();
-        return view('home', compact('count_users','count_roles','count_notas'));
+        $count_bikes  = Bike::count();
+        return view('home', compact('count_users','count_roles','count_notas', 'count_bikes'));
     }
 }

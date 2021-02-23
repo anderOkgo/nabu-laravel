@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Bike;
 
 use Illuminate\Http\Request;
 
@@ -11,9 +12,9 @@ class BikeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        if(request()->ajax()) {
+        if($request->ajax()) {
             return datatables()->of(Bike::select('*'))
             ->addColumn('action', 'DataTables.action')
             ->rawColumns(['action'])

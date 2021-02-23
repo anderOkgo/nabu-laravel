@@ -73,12 +73,13 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>65</h3>
+                        <h3>{{$count_bikes}}</h3>
 
-                        <p>Mensajes</p>
+                        <p>Bikes</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-android-drafts"></i>
+                        <i class="ion ion-android-bicycle"></i>
+                        
                     </div>
                     <a href="#" class="small-box-footer">Más info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -89,7 +90,7 @@
         <!-- Main row -->
         <div class="row">
             <!-- Left col -->
-            <section class="col-lg-7 connectedSortable">
+            <section class="col-lg-12 connectedSortable">
                 <!-- TO DO List -->
                 <div class="card">
                     <div class="card-header">
@@ -224,7 +225,7 @@
             </section>
             <!-- /.Left col -->
             <!-- right col (We are only adding the ID to make the widgets sortable)-->
-            <section class="col-lg-5 connectedSortable">
+            {{-- <section class="col-lg-5 connectedSortable">
                 <!-- DIRECT CHAT -->
                 <div class="card direct-chat direct-chat-primary">
                     <div class="card-header">
@@ -427,7 +428,7 @@
                     <!-- /.card-footer-->
                 </div>
                 <!--/.direct-chat -->
-            </section>
+            </section> --}}
             <!-- right col -->
         </div>
         <!-- /.row (main row) -->
