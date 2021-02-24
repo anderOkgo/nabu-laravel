@@ -55,7 +55,7 @@
           </div>
           <div class="form-group col-md-6">
             <label >Imagen</label>
-            <input type="file" name="imagen" class="form-control">
+            <input type="file" id="imagen" name="imagen" class="form-control">
           </div>
         </div>
 
@@ -72,5 +72,29 @@
   
 
 </div>
+
+@push('scripts')
+  <script>
+     $(function() {
+        $('#usuario').select2({
+          theme: 'bootstrap4',
+          width: '100%'
+        });
+
+        //$('#f-input').fileinput();
+        $('#imagen').fileinput({
+        theme: 'fas',
+        language: 'fr',
+        uploadUrl: '#',
+        initialPreview: [
+          "<img src='/imagenes/08snk4.png' class='file-preview-image' alt='Desert' title='Desert'>"
+        ],
+        allowedFileExtensions: ['jpg', 'png', 'gif']
+    });
+        
+      });
+
+  </script>
+@endpush
 
 @endsection

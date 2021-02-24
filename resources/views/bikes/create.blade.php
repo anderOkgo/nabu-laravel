@@ -55,7 +55,7 @@
       </div>
       <div class="form-group col-md-6">
         <label >Foto</label>
-        <input type="file" name="foto" class="form-control">
+        <input type="file" id="f-input" name="foto" class="form-control">
       </div>
     </div>
 
@@ -76,6 +76,14 @@
           theme: 'bootstrap4',
           width: '100%'
         });
+
+        //$('#f-input').fileinput();
+        $('#f-input').fileinput({
+        theme: 'fas',
+        language: 'fr',
+        uploadUrl: '#',
+        allowedFileExtensions: ['jpg', 'png', 'gif']
+    });
         
       });
 
