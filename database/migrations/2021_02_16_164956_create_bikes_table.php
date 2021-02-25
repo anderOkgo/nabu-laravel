@@ -21,6 +21,7 @@ class CreateBikesTable extends Migration
             $table->string('brand')->nullable();
             $table->string('serial')->nullable();
             $table->string('invoice_path')->nullable();
+            $table->string('user_id');
             $table->timestamps();
         });
     }

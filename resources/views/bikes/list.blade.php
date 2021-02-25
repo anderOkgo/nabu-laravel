@@ -14,6 +14,7 @@
         <th>brand</th>
         <th>photo_path</th>
         <th>code_path</th>
+        <th>actions</th>
       </tr>
    </thead>
 </table>
@@ -75,6 +76,7 @@
               { data: 'brand', name: 'brand'},
               { data: 'photo_path', name: 'photo_path', searchable: false},
               { data: 'code_path', name: 'code_path', orderable: false, searchable: false},
+              { data: 'actions', name: 'actions', orderable: false, searchable: false},
             ]
          });
      });

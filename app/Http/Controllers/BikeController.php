@@ -5,6 +5,7 @@ use App\Bike;
 use App\User;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\BikeFormRequest;
 
 class BikeController extends Controller
 {
@@ -17,8 +18,8 @@ class BikeController extends Controller
     {
         if($request->ajax()) {
             return datatables()->of(Bike::select('*'))
-            ->addColumn('action', 'DataTables.action')
-            ->rawColumns(['action'])
+            ->addColumn('actions', 'bikes.actions')
+            ->rawColumns(['actions'])
             ->addIndexColumn()
             ->make(true);
         }
@@ -42,23 +43,28 @@ class BikeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserFormRequest $request)
+    public function store(BikeFormRequest $request)
     {
-        $usuario           = new User();
-        $usuario->name     = request('name');
-        $usuario->email    = request('email');
-        $usuario->password = bcrypt(request('password'));
-        if ($request->hasFile('imagen')) {
-            $file = $request->imagen;
+        $bici           = new Bike();
+        $bici->color    = request('color');
+        $bici->brand    = request('marca');
+        $bici->serial   = request('serial');
+        $bici->user_id   = request('usuario');
+        if ($request->hasFile('factura')) {
+            $file = $request->factura;
             $file->move(public_path() . '/imagenes', $file->getClientOriginalName());
-            $usuario->imagen = $file->getClientOriginalName();
+            $bici->invoice_path = $file->getClientOriginalName();
+        }
+
+        if ($request->hasFile('foto')) {
+            $file = $request->foto;
+            $file->move(public_path() . '/imagenes', $file->getClientOriginalName());
+            $bici->photo_path = $file->getClientOriginalName();
         }
         
-        $usuario->save();
+        $bici->save();
 
-        $usuario->asignarRole($request->get('rol'));
-
-        return redirect('/usuarios');
+        return redirect('/bikes');
     }
 
     /**
@@ -80,10 +86,10 @@ class BikeController extends Controller
      */
     public function edit($id)
     {
-        $where = array('id' => $id);
-        $product  = Product::where($where)->first();
-  
-        return Response::json($product);
+        $bike  = Bike::findOrFail($id);
+        $users =  User::all();
+        return view('bikes.edit', ['bike' => $bike, 'users' => $users ]);
+        
     }
 
     /**
@@ -95,7 +101,27 @@ class BikeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $bici           = Bike::findOrFail($id);
+        $bici->color    = request('color');
+        $bici->brand    = request('marca');
+        $bici->serial   = request('serial');
+        $bici->user_id  = request('usuario');
+        
+        if ($request->hasFile('factura')) {
+            $file = $request->factura;
+            $file->move(public_path() . '/imagenes', $file->getClientOriginalName());
+            $bici->invoice_path = $file->getClientOriginalName();
+        }
+
+        if ($request->hasFile('foto')) {
+            $file = $request->foto;
+            $file->move(public_path() . '/imagenes', $file->getClientOriginalName());
+            $bici->photo_path = $file->getClientOriginalName();
+        }
+        
+        $bici->update();
+
+        return redirect('/bikes');
     }
 
     /**
@@ -106,8 +132,8 @@ class BikeController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::where('id',$id)->delete();
-  
-        return Response::json($product);
+        $bici  = Bike::findOrFail($id);
+        $bici->delete();
+        return redirect('/bikes');
     }
 }

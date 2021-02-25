@@ -43,6 +43,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Role::class)->withTimestamps();
     }
 
+    public function bikes()
+    {
+        return $this->hasMany(Bike::class);
+    }
+    
     public function asignarRole($role)
     {
         $this->roles()->sync($role, false);
@@ -51,5 +56,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function tieneRole()
     {
         return $this->roles->flatten()->pluck('name')->unique();
+    }
+
+    public function tieneBike()
+    {
+        return $this->bikes->flatten()->pluck('user_id')->unique();
     }
 }
