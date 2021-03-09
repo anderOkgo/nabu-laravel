@@ -43,7 +43,7 @@
         <select name="usuario" id="usuario" class="form-control">
           <option selected disabled>Elige un usuario para esta Bicicleta...</option>
           @foreach($users as $user)
-              @if( $user->id ==  str_replace(array('[', ']'), '', $user->tieneBike() ) )
+              @if( $user->id ==  str_replace(array('[', ']', '"'), '', $user->tieneBike() ) )
               <option value="{{$user->id}}" selected>{{$user->name}}</option>
               @else
               <option value="{{$user->id}}">{{ $user->name }}</option>
