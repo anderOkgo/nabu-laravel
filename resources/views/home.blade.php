@@ -96,7 +96,7 @@
                     <div class="card-header">
                         <h3 class="card-title">
                             <i class="ion ion-clipboard mr-1"></i>
-                            To Do List
+                            Tareas por hacer
                         </h3>
 
                         <div class="card-tools">
