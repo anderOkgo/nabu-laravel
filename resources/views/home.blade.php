@@ -142,7 +142,7 @@
                                     <input type="checkbox" value="" name="todo2" id="todoCheck2" checked>
                                     <label for="todoCheck2"></label>
                                 </div>
-                                <span class="text">Make the theme responsive</span>
+                                <span class="text">Make2 the theme responsive</span>
                                 <small class="badge badge-info"><i class="far fa-clock"></i> 4 hours</small>
                                 <div class="tools">
                                     <i class="fas fa-edit"></i>
