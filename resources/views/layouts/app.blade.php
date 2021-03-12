@@ -15,6 +15,7 @@
     <script src="{{ asset('js/jquery.js') }}" ></script>
     <script src="{{ asset('js/jquery.dataTables.min.js') }}" defer></script>
     <script src="{{ asset('js/select2.min.js') }}" defer ></script>
+    <script src="{{ asset('js/clipboard.min.js') }}" defer ></script>
     
     <script src="{{ asset('js/plugins/piexif.js') }}" defer></script>
     <script src="{{ asset('js/plugins/sortable.js') }}" defer></script>
@@ -240,6 +241,18 @@
                                     <i class="nav-icon fas fa-lock-open"></i>
                                     <p>
                                         Roles
+                                    </p>
+                                </a>
+                            </li>
+                            @endcan
+
+                            @can('administrador')
+                            <li class="nav-item">
+                                <a href="{{ url('gps')}}"
+                                    class="{{ Request::path() === 'gps' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="nav-icon fas fa-lock-open"></i>
+                                    <p>
+                                        Gps
                                     </p>
                                 </a>
                             </li>

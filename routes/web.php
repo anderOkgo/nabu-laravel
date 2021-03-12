@@ -18,6 +18,8 @@ Auth::routes(['verify' => true] );
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('gps', 'GpsController@index');
+
 Route::resource('usuarios', 'UserController');
 Route::resource('roles', 'RoleController');
 Route::resource('bikes', 'BikeController');
