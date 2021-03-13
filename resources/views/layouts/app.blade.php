@@ -33,7 +33,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link rel="manifest" href="manifest-30213.json">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/icon/favicon-32x32-dunplab-manifest-30213.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/icon/favicon-32x32-dunplab-manifest-31313.png">
 
     <!-- Styles -->
     <link href="{{ asset('dist/css/adminlte.min.css') }}" rel="stylesheet">
@@ -177,7 +177,7 @@
             <aside class="main-sidebar sidebar-dark-primary elevation-4">
                 <!-- Brand Logo -->
                 <a href="{{ url('/') }}" class="brand-link">
-                    <img src=" {{ asset('dist/img/AdminLTELogo.png') }} " alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                    <img src=" {{ asset('/icon/apple-icon-60x60-dunplab-manifest-31313.png') }} " alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                         style="opacity: .8">
                     <span class="brand-text font-weight-light">Nabu</span>
                 </a>
