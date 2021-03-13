@@ -32,7 +32,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <link rel="manifest" href="manifest-30213.json">
+    <link rel="manifest" href="manifest-31313.json">
     <link rel="icon" type="image/png" sizes="192x192"  href="/icon/favicon-32x32-dunplab-manifest-31313.png">
 
     <!-- Styles -->
