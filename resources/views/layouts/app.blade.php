@@ -250,13 +250,37 @@
 
                             @can('administrador')
                             <li class="nav-item">
-                                <a href="{{ url('gps')}}"
-                                    class="{{ Request::path() === 'gps' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="nav-icon fas fa-lock-open"></i>
+                                <a href="{{ url('gps')}}" class="{{ Request::path() === 'gps' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="nav-icon fas fa-globe"></i>
                                     <p>
                                         Gps
+                                        <i class="fas fa-angle-left right"></i>
                                     </p>
                                 </a>
+                                <ul class="nav nav-treeview" >
+                                    <li class="nav-item">
+                                      <a href="{{url('gps/inicio')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Inicio</p>
+                                      </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-treeview" >
+                                    <li class="nav-item">
+                                      <a href="{{url('gps/pass')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Cambio de Contraseña</p>
+                                      </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-treeview" >
+                                    <li class="nav-item">
+                                      <a href="{{url('gps/tels')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Agragar Telefonos</p>
+                                      </a>
+                                    </li>
+                                </ul>
                             </li>
                             @endcan
 

@@ -13,8 +13,20 @@ class GpsController extends Controller
 
     }
 
-    public function index()
+    public function index($id)
     {
-        return view('gps.index');
+        //dd($id);
+        switch ($id) {
+            case "inicio":
+                return view('gps.inicio', ['id' => $id] );
+                break;
+            case "tels":
+                //dd($id);
+                return view('gps.tels', ['id' => $id] );
+                break;
+            case "pass":
+                return view('gps.pass', ['id' => $id] );
+                break;
+        }
     }
 }
