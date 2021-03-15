@@ -3,17 +3,25 @@
 
 @section('content')
 
-<h2 class="mx-auto">Cambio de Contraseña</h2>
+<h2 class="mx-auto">Agregar Operador</h2>
 <hr><br>
 <div class="container col-md-6 mx-auto">
 
     <div class="form-group">
-        <label  for="exampleInputEmail1">Contraseña anterior</label>
+        <label  for="exampleInputEmail1">Contraseña</label>
         <input id="pass" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite contraseña">
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Contraeña Nueva</label>
-        <input id="new_pass" type="text" class="form-control" id="exampleInputPassword1" placeholder="Digite nueva contraseña">
+        <label for="exampleInputPassword1">APN</label>
+        <input id="new_pass" type="text" class="form-control" id="exampleInputPassword1" placeholder="Digite APN del operador">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">APN Usuario</label>
+        <input id="apn" type="text" class="form-control" id="exampleInputPassword1" placeholder="Digite usuario APN">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">APN Contraseña</label>
+        <input id="apn_pass" type="text" class="form-control" id="exampleInputPassword1" placeholder="Digite contraseña de usuario APN">
       </div>
 
       <hr>
@@ -48,7 +56,7 @@
         });
 
         function genrete_comand() {
-            $('#nue').val( '777' +$('#pass').val() + $('#new_pass').val());
+            $('#nue').val( '803' +$('#pass').val() + ' ' + $('#new_pass').val() + ' ' + $('#apn').val() + ' ' + $('#apn_pass').val() );
         }
 
     });

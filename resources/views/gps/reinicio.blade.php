@@ -2,8 +2,21 @@
 
 
 @section('content')
+
+<h2 class="mx-auto">Reiniciar</h2>
+<hr><br>
 <div class="container col-md-6 mx-auto">
-  <h2>Inicio</h2>
+
+      <hr>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <a id="btn_generate" class="btn btn-primary" href="sms:+573157625054"  data-clipboard-action="copy" data-clipboard-target="#nue">Copiar y Enviar</a>
+        </div>
+        <!-- /btn-group -->
+        <input id="nue" type="text" class="form-control" value= "RESTART">
+      </div>
+
+    </div>
 
 <div>
 
@@ -26,7 +39,7 @@
         });
 
         function genrete_comand() {
-            $('#nue').val( '777' +$('#pass').val() + $('#new_pass').val());
+            $('#nue').val( 'RESTART');
         }
 
     });

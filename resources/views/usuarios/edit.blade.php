@@ -45,6 +45,8 @@
 
 
         <div class="row">
+
+          @can('administrador')            
           <div class="form-group col-md-6">
             <label for="rol">Rol</label>
             <select name="rol" class="form-control">
@@ -58,6 +60,7 @@
               @endforeach
             </select>
           </div>
+          @endcan
           <div class="form-group col-md-6">
             <label >Imagen</label>
             <input type="file" name="imagen" class="form-control">

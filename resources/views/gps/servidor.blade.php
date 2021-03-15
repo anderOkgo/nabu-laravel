@@ -3,17 +3,21 @@
 
 @section('content')
 
-<h2 class="mx-auto">Cambio de Contraseña</h2>
+<h2 class="mx-auto">Agregar Servidor</h2>
 <hr><br>
 <div class="container col-md-6 mx-auto">
 
     <div class="form-group">
-        <label  for="exampleInputEmail1">Contraseña anterior</label>
+        <label  for="exampleInputEmail1">Contraseña</label>
         <input id="pass" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite contraseña">
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Contraeña Nueva</label>
+        <label for="exampleInputPassword1">Servidor</label>
         <input id="new_pass" type="text" class="form-control" id="exampleInputPassword1" placeholder="Digite nueva contraseña">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Puerto</label>
+        <input id="apn" type="text" class="form-control" id="exampleInputPassword1" placeholder="Digite nueva contraseña">
       </div>
 
       <hr>
@@ -48,7 +52,7 @@
         });
 
         function genrete_comand() {
-            $('#nue').val( '777' +$('#pass').val() + $('#new_pass').val());
+            $('#nue').val( '804' +$('#pass').val() + ' ' + $('#new_pass').val() + ' ' + $('#apn').val() );
         }
 
     });

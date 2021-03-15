@@ -3,24 +3,19 @@
 
 @section('content')
 
-<h2 class="mx-auto">Agregar télefonos</h2>
+<h2 class="mx-auto">Activar Geocerca</h2>
 <hr><br>
 <div class="container col-md-6 mx-auto">
 
-  <div class="form-group">
-    <label for="exampleInputPassword1">Contraseña</label>
-    <input id="new_pass" type="text" class="form-control" id="exampleInputPassword1" placeholder="Digite contraseña">
-  </div>
     <div class="form-group">
-        <label  for="exampleInputEmail1">Télefono</label>
-        <input id="pass" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite Télefono">
+        <label  for="exampleInputEmail1">Contraseña</label>
+        <input id="pass" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite contraseña">
       </div>
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Posición Télefono</label>
+        <label for="exampleFormControlSelect1">Cambiar Estado</label>
         <select class="form-control" id="exampleFormControlSelect1">
-          <option id="1">1</option>
-          <option id="2">2</option>
-          <option id="3">3</option>
+          <option id="1">Encendido</option>
+          <option id="2">Apagado</option>
         </select>
       </div>
 
@@ -61,7 +56,14 @@
         });
 
         function genrete_comand() {
-            $('#nue').val( $('#pass').val() + $('#new_pass').val() + ' ' +$('#exampleFormControlSelect1').val()  );
+          if($('#exampleFormControlSelect1').val() == "Encendido") {
+          com = '210';
+        } else {
+          com = '211';
+
+        }
+        
+            $('#nue').val( com + $('#pass').val() );
         }
 
     });

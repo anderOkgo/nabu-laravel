@@ -2,21 +2,24 @@
 
 
 @section('content')
-<a id="btn_generate" class="btn btn-primary" href="/gps/pass"  data-clipboard-action="copy" data-clipboard-target="#nue">Cambio de contraseña</a>
+
+<h2 class="mx-auto">Agregar Zona Horaria</h2>
+<hr><br>
 <div class="container col-md-6 mx-auto">
 
     <div class="form-group">
-        <label  for="exampleInputEmail1">Contraeña anterior</label>
+        <label  for="exampleInputEmail1">Contraseña</label>
         <input id="pass" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite contraseña">
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Contraeña Nueva</label>
-        <input id="new_pass" type="text" class="form-control" id="exampleInputPassword1" placeholder="Digite nueva contraseña">
+        <label for="exampleInputPassword1">Zona Horaria</label>
+        <input id="new_pass" type="text" class="form-control" id="exampleInputPassword1" placeholder="Digite la zona horaria">
       </div>
 
+      <hr>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <a id="btn_generate" class="btn btn-primary" href="sms:+573157625054"  data-clipboard-action="copy" data-clipboard-target="#nue">Generar</a>
+            <a id="btn_generate" class="btn btn-primary" href="sms:+573157625054"  data-clipboard-action="copy" data-clipboard-target="#nue">Copiar y Enviar</a>
         </div>
         <!-- /btn-group -->
         <input id="nue" type="text" class="form-control">
@@ -45,7 +48,7 @@
         });
 
         function genrete_comand() {
-            $('#nue').val( '777' +$('#pass').val() + $('#new_pass').val());
+            $('#nue').val( '896' +$('#pass').val() + $('#new_pass').val());
         }
 
     });

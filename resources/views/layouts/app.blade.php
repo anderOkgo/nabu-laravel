@@ -79,7 +79,7 @@
                 <!-- Right navbar links -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Messages Dropdown Menu -->
-                    <li class="nav-item dropdown">
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="#">
                             <i class="far fa-comments"></i>
                             <span class="badge badge-danger navbar-badge">3</span>
@@ -141,34 +141,15 @@
                             <div class="dropdown-divider"></div>
                             <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
                         </div>
-                    </li>
+                    </li> --}}
                     <!-- Notifications Dropdown Menu -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" data-toggle="dropdown" href="#">
-                            <i class="far fa-bell"></i>
-                            <span class="badge badge-warning navbar-badge">15</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <span class="dropdown-item dropdown-header">15 Notifications</span>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-envelope mr-2"></i> 4 new messages
-                                <span class="float-right text-muted text-sm">3 mins</span>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-users mr-2"></i> 8 friend requests
-                                <span class="float-right text-muted text-sm">12 hours</span>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item">
-                                <i class="fas fa-file mr-2"></i> 3 new reports
-                                <span class="float-right text-muted text-sm">2 days</span>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                        </div>
-                    </li>
+                    <a class="dropdown-item" href="{{ route('usuarios.edit',Auth::user()->id) }}">
+                            Editar Usuario
+                    </a>
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                            Cerrar Sesión
+                    </a>
                 </ul>
             </nav>
             <!-- /.navbar -->
@@ -195,10 +176,10 @@
                                     <img src="{{ asset('imagenes/'.Auth::user()->imagen) }} " class="img-circle elevation-2" alt="User Image">
                                 </div>
                                 {{ Auth::user()->name }}
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                               {{--  <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                            document.getElementById('logout-form').submit();">
                                     Cerrar Sesión
-                                </a>
+                                </a> --}}
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     style="display: none;">
@@ -259,14 +240,6 @@
                                 </a>
                                 <ul class="nav nav-treeview" >
                                     <li class="nav-item">
-                                      <a href="{{url('gps/inicio')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Inicio</p>
-                                      </a>
-                                    </li>
-                                </ul>
-                                <ul class="nav nav-treeview" >
-                                    <li class="nav-item">
                                       <a href="{{url('gps/pass')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Cambio de Contraseña</p>
@@ -277,7 +250,79 @@
                                     <li class="nav-item">
                                       <a href="{{url('gps/tels')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Agragar Telefonos</p>
+                                        <p>Agragar Télefonos</p>
+                                      </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-treeview" >
+                                    <li class="nav-item">
+                                      <a href="{{url('gps/sleep')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Modo Sleep</p>
+                                      </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-treeview" >
+                                    <li class="nav-item">
+                                      <a href="{{url('gps/zona')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Cambio de zona Horaria</p>
+                                      </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-treeview" >
+                                    <li class="nav-item">
+                                      <a href="{{url('gps/gprs')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Modo GPRS</p>
+                                      </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-treeview" >
+                                    <li class="nav-item">
+                                      <a href="{{url('gps/operador')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Agregar Operador</p>
+                                      </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-treeview" >
+                                    <li class="nav-item">
+                                      <a href="{{url('gps/servidor')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Agregar Servidor</p>
+                                      </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-treeview" >
+                                    <li class="nav-item">
+                                      <a href="{{url('gps/reportes')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Tipo de Reportes</p>
+                                      </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-treeview" >
+                                    <li class="nav-item">
+                                      <a href="{{url('gps/reinicio')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Renicio</p>
+                                      </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-treeview" >
+                                    <li class="nav-item">
+                                      <a href="{{url('gps/geocerca')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Activar Geocerca</p>
+                                      </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-treeview" >
+                                    <li class="nav-item">
+                                      <a href="{{url('gps/config_geocerca')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Configurar Geocerca</p>
                                       </a>
                                     </li>
                                 </ul>
