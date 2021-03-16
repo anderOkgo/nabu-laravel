@@ -229,7 +229,7 @@
                             </li>
                             @endcan
 
-                            @can('administrador')
+                            @can('gps')
                             <li class="nav-item">
                                 <a href="{{ url('gps')}}" class="{{ Request::path() === 'gps' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="nav-icon fas fa-globe"></i>

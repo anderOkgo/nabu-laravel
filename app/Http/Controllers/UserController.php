@@ -7,6 +7,7 @@ use App\Http\Requests\UserFormRequest;
 use App\Http\Requests\UserEditFormRequest;
 use App\User;
 use App\Role;
+use Auth;
 use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\DataTables;
 
@@ -144,10 +145,13 @@ class UserController extends Controller
             $usuario->asignarRole($request->get('rol'));
         }
 
-
         $usuario->update();
 
-        return redirect('/usuarios');
+        if(Auth::user()->tieneRole()[0] == "gps") {
+            return redirect('/');
+        } else {
+            return redirect('/usuarios');
+        }
     }
 
     /**

@@ -86,9 +86,6 @@
         theme: 'fas',
         language: 'fr',
         uploadUrl: '#',
-        initialPreview: [
-          "<img src='/imagenes/08snk4.png' class='file-preview-image' alt='Desert' title='Desert'>"
-        ],
         allowedFileExtensions: ['jpg', 'png', 'gif']
     });
         

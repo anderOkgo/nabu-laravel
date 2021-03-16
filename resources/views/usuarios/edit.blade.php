@@ -46,21 +46,30 @@
 
         <div class="row">
 
-          @can('administrador')            
-          <div class="form-group col-md-6">
-            <label for="rol">Rol</label>
-            <select name="rol" class="form-control">
-              <option selected disabled>Elige un rol para este usuario...</option>
-              @foreach($roles as $role)
-              @if($role->name == str_replace(array('["', '"]'), '', $user->tieneRole() ))
-              <option value="{{$role->id}}" selected>{{$role->name}}</option>
-              @else
-              <option value="{{$role->id}}">{{$role->name}}</option>
-              @endif
-              @endforeach
-            </select>
-          </div>
+          @can('gps')
+          <div class="d-none">
           @endcan
+            <div class="form-group col-md-6">
+              <label for="rol">Rol</label>
+              <select name="rol" class="form-control">
+                <option selected disabled>Elige un rol para este usuario...</option>
+                @foreach($roles as $role)
+                @if($role->name == str_replace(array('["', '"]'), '', $user->tieneRole() ))
+                <option value="{{$role->id}}" selected>{{$role->name}}</option>
+                @else
+                <option value="{{$role->id}}">{{$role->name}}</option>
+                @endif
+                @endforeach
+              </select>
+            </div>
+
+            @can('gps')
+          </div> 
+            @endcan
+              
+          
+          
+          <input type="hidden" name="{{$user->tieneRole()}}">
           <div class="form-group col-md-6">
             <label >Imagen</label>
             <input type="file" name="imagen" class="form-control">
