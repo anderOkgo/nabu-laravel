@@ -40,13 +40,16 @@ Esta información puede ser eliminada borrando datos de navegación del navegado
 @push('scripts')
   <script>
      $(function() {
-        var clipboard = new ClipboardJS('#btn_generate');
-        $("#pass").val(localStorage.getItem("pass"));
-        $("#btn_generate").attr('href', 'sms:' + localStorage.getItem("tel"));
-        var clipboard = new ClipboardJS('#btn_generate');
-        $("#pass").val(localStorage.getItem("pass"));
-        $("#new_pass").val(localStorage.getItem("tel"));
-        $("#btn_generate").attr('href', 'sms:+57' + localStorage.getItem("tel"));
+
+
+      if(localStorage.getItem('pass') == undefined && localStorage.getItem('tel') == undefined) {
+        localStorage.setItem("pass", '');
+        localStorage.setItem("tel", '');
+      }
+      var clipboard = new ClipboardJS('#btn_generate');
+      $("#pass").val(localStorage.getItem("pass"));
+      $("#new_pass").val(localStorage.getItem("tel"));
+      $("#btn_generate").attr('href', 'sms:' + localStorage.getItem("tel"));
      });
 
      $(document).ready(function() {
