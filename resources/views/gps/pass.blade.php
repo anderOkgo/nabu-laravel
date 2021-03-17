@@ -51,6 +51,7 @@
 
         function genrete_comand() {
             $('#nue').val( '777' +$('#pass').val() + $('#new_pass').val());
+            localStorage.setItem("pass", $('#new_pass').val());
         }
 
     });
