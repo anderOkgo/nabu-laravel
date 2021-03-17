@@ -7,6 +7,7 @@ use App\User;
 use App\Role;
 use App\Notas;
 use App\Bike;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -29,10 +30,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $count_users  = User::count();
-        $count_roles = Role::count();
-        $count_notas  = Notas::count();
-        $count_bikes  = Bike::count();
-        return view('home', compact('count_users','count_roles','count_notas', 'count_bikes'));
+        if(Auth::user()->tieneRole()[0] !== "gps") {
+            $count_users  = User::count();
+            $count_roles = Role::count();
+            $count_notas  = Notas::count();
+            $count_bikes  = Bike::count();
+            return view('home', compact('count_users','count_roles','count_notas', 'count_bikes'));
+        } else {
+            return view('homegps');
+        }
+        
     }
 }

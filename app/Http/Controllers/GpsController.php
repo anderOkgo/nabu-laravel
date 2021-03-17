@@ -17,6 +17,12 @@ class GpsController extends Controller
     {
         //dd($id);
         switch ($id) {
+            case "inicio":
+                return view('gps.inicio', ['id' => $id] );
+                break;
+            case "ubicacion":
+                return view('gps.ubicacion', ['id' => $id] );
+                break;
             case "config_geocerca":
                 return view('gps.config_geocerca', ['id' => $id] );
                 break;

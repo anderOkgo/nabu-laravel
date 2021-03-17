@@ -240,6 +240,22 @@
                                 </a>
                                 <ul class="nav nav-treeview" >
                                     <li class="nav-item">
+                                      <a href="{{url('gps/inicio')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Inicio</p>
+                                      </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-treeview" >
+                                    <li class="nav-item">
+                                      <a href="{{url('gps/ubicacion')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Obtener Ubicación</p>
+                                      </a>
+                                    </li>
+                                </ul>
+                                <ul class="nav nav-treeview" >
+                                    <li class="nav-item">
                                       <a href="{{url('gps/pass')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Cambio de Contraseña</p>
@@ -250,7 +266,7 @@
                                     <li class="nav-item">
                                       <a href="{{url('gps/tels')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Agragar Télefonos</p>
+                                        <p>Agregar Télefonos</p>
                                       </a>
                                     </li>
                                 </ul>

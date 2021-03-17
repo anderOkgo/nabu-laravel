@@ -3,25 +3,13 @@
 
 @section('content')
 
-<h2 class="mx-auto">Agregar télefonos</h2>
+<h2 class="mx-auto">Obtener ubicación</h2>
 <hr><br>
 <div class="container col-md-6 mx-auto">
 
-  <div class="form-group">
-    <label for="exampleInputPassword1">Contraseña</label>
-    <input id="pass" type="password" class="form-control" id="exampleInputPassword1" placeholder="Digite contraseña">
-  </div>
     <div class="form-group">
-        <label  for="exampleInputEmail1">Télefono</label>
-        <input id="tels" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite Télefono">
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Posición Télefono</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-          <option id="1">1</option>
-          <option id="2">2</option>
-          <option id="3">3</option>
-        </select>
+        <label  for="exampleInputEmail1">Contraseña</label>
+        <input id="pass" type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite contraseña">
       </div>
 
       <hr>
@@ -49,6 +37,7 @@
      $(document).ready(function(){
         $("input, select").keypress(function(){
             genrete_comand();
+            
         });
 
         $("input, select").blur(function(){
@@ -62,7 +51,8 @@
         });
 
         function genrete_comand() {
-            $('#nue').val( $('#tels').val() + $('#pass').val() + ' ' +$('#exampleFormControlSelect1').val()  );
+          com = '669';
+          $('#nue').val( com + $('#pass').val() );
         }
 
     });

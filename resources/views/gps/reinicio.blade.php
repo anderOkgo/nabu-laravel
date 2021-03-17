@@ -10,7 +10,7 @@
       <hr>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <a id="btn_generate" class="btn btn-primary" href="sms:+573157625054"  data-clipboard-action="copy" data-clipboard-target="#nue">Copiar y Enviar</a>
+            <a id="btn_generate" class="btn btn-primary"   data-clipboard-action="copy" data-clipboard-target="#nue">Copiar y Enviar</a>
         </div>
         <!-- /btn-group -->
         <input id="nue" type="text" class="form-control" value= "RESTART">
@@ -25,6 +25,8 @@
   <script>
      $(function() {
         var clipboard = new ClipboardJS('#btn_generate');
+        $("#pass").val(localStorage.getItem("pass"));
+        $("#btn_generate").attr('href', 'sms:' + localStorage.getItem("tel"));
      });
 
      $(document).ready(function(){
