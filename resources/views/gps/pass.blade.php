@@ -12,7 +12,7 @@
         <input id="pass" type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite contraseña">
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Contraeña Nueva</label>
+        <label for="exampleInputPassword1">Contraseña Nueva</label>
         <input id="new_pass" type="text" class="form-control" id="exampleInputPassword1" placeholder="Digite nueva contraseña">
       </div>
 

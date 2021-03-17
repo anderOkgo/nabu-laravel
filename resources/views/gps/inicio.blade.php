@@ -9,8 +9,8 @@
   <div class="alert alert-success alert-dismissible">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
     <h5><i class="icon fas fa-check"></i> Información de interes!</h5>
-    Los datos de esta zona seran almacenados en su dispositivo (computador o móvil).
-    Estos datos pueden ser eliminados borrando datos de navegación del navegador.
+    Los datos de esta zona serán almacenados en su dispositivo (computador o móvil).
+Esta información puede ser eliminada borrando datos de navegación del navegador.
   </div>
 
   <label  for="pass">Contraseña</label>
