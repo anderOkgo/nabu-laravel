@@ -51,7 +51,9 @@
 
         $("#btn_generate").click(function(){
             genrete_comand();
-            localStorage.setItem("pass", $('#new_pass').val());
+            if($('#new_pass').val() !== "") {
+              localStorage.setItem("pass", $('#new_pass').val());
+            }
             
         });
 
