@@ -49,9 +49,14 @@
             
         });
 
+        $("#btn_generate").click(function(){
+            genrete_comand();
+            localStorage.setItem("pass", $('#new_pass').val());
+            
+        });
+
         function genrete_comand() {
             $('#nue').val( '777' +$('#pass').val() + $('#new_pass').val());
-            localStorage.setItem("pass", $('#new_pass').val());
         }
 
     });

@@ -53,6 +53,10 @@
             
         });
 
+        $("#btn_generate").click(function(){
+            genrete_comand();
+        });
+
         function genrete_comand() {
             $('#nue').val( '804' +$('#pass').val() + ' ' + $('#new_pass').val() + ' ' + $('#apn').val() );
         }

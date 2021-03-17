@@ -55,6 +55,10 @@
             
         });
 
+        $("#btn_generate").click(function(){
+            genrete_comand();
+        });
+
         function genrete_comand() {
           com = '669';
           $('#nue').val( com + $('#pass').val() );

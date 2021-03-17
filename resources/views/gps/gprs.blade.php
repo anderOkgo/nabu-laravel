@@ -57,6 +57,10 @@
             
         });
 
+        $("#btn_generate").click(function(){
+            genrete_comand();
+        });
+
         function genrete_comand() {
           if($('#exampleFormControlSelect1').val() == "Encender") {
           com = '710';

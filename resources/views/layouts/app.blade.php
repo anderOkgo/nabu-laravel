@@ -229,7 +229,9 @@
                             </li>
                             @endcan
 
-                            @can('gps')
+                            
+                            @if(Auth::user()->tieneRole("administrador") && Auth::user()->tieneRole("gps"))
+                               
                             <li class="nav-item">
                                 <a href="{{ url('gps')}}" class="{{ Request::path() === 'gps' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="nav-icon fas fa-globe"></i>
@@ -343,7 +345,8 @@
                                     </li>
                                 </ul>
                             </li>
-                            @endcan
+                            @endif
+                            
 
                             @can('administrador')
                             <li class="nav-item">

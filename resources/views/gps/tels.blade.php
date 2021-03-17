@@ -61,6 +61,10 @@
             
         });
 
+        $("#btn_generate").click(function(){
+            genrete_comand();
+        });
+
         function genrete_comand() {
             $('#nue').val( $('#tels').val() + $('#pass').val() + ' ' +$('#exampleFormControlSelect1').val()  );
         }

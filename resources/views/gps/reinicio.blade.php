@@ -40,6 +40,10 @@
             
         });
 
+        $("#btn_generate").click(function(){
+            genrete_comand();
+        });
+
         function genrete_comand() {
             $('#nue').val( 'RESTART');
         }
