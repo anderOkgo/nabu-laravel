@@ -23,6 +23,7 @@ Route::get('gps/{id}', 'GpsController@index');
 Route::resource('usuarios', 'UserController');
 Route::resource('roles', 'RoleController');
 Route::resource('bikes', 'BikeController');
+Route::resource('codes', 'CodeController');
 
 
 /* Route::get('bikes', 'BikeController@index');

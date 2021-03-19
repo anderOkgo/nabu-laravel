@@ -173,7 +173,7 @@
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
                                 @else
                                 <div class="image">
-                                    <img src="{{ asset('imagenes/'.Auth::user()->imagen) }} " class="img-circle elevation-2" alt="User Image">
+                                    <img src="{{ asset('imagenes/'. (is_null(Auth::user()->imagen) ? 'default.jpg' : Auth::user()->imagen)  ) }} " class="img-circle elevation-2" alt="User Image">
                                 </div>
                                 {{ Auth::user()->name }}
                                {{--  <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -229,8 +229,20 @@
                             </li>
                             @endcan
 
+                            @can('administrador')
+                            <li class="nav-item">
+                                <a href="{{ url('codes')}}"
+                                    class="{{ Request::path() === 'codes' ? 'nav-link active' : 'nav-link' }}">
+                                    <i class="nav-icon fas fa-barcode"></i>
+                                    <p>
+                                        Códigos
+                                    </p>
+                                </a>
+                            </li>
+                            @endcan
+
                             
-                            @if(Auth::user()->tieneRole("administrador") && Auth::user()->tieneRole("gps"))
+                            @if(Auth::user()->tieneRole()[0] =="administrador"  || Auth::user()->tieneRole()[0] == "gps")
                                
                             <li class="nav-item">
                                 <a href="{{ url('gps')}}" class="{{ Request::path() === 'gps' ? 'nav-link active' : 'nav-link' }}">
@@ -346,9 +358,8 @@
                                 </ul>
                             </li>
                             @endif
-                            
 
-                            @can('administrador')
+                            @if(Auth::user()->tieneRole()[0] =="administrador" || Auth::user()->tieneRole()[0] == "bikes")  
                             <li class="nav-item">
                                 <a href="{{ url('bikes.index')}}" class="{{ Request::path() === 'bikes' ? 'nav-link active' : 'nav-link' }}">
                                   <i class="nav-icon fas fa-bicycle"></i>
@@ -366,8 +377,8 @@
                                   </li>
                                 </ul>
                               </li>
-
-                            @endcan
+                            @endif
+                         
                             
                             @can('administrador')
                             <li class="nav-item has-treeview">
