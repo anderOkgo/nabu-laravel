@@ -80,7 +80,7 @@ class RegisterController extends Controller
 
             return $user;
         } else {
-            return redirect('/register');
+             abort(403);exit();
         }
 
     }
