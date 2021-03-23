@@ -235,7 +235,7 @@
                                     class="{{ Request::path() === 'codes' ? 'nav-link active' : 'nav-link' }}">
                                     <i class="nav-icon fas fa-barcode"></i>
                                     <p>
-                                        Códigos
+                                        Generar Códigos
                                     </p>
                                 </a>
                             </li>
@@ -364,7 +364,7 @@
                                 <a href="{{ url('bikes.index')}}" class="{{ Request::path() === 'bikes' ? 'nav-link active' : 'nav-link' }}">
                                   <i class="nav-icon fas fa-bicycle"></i>
                                   <p>
-                                    Bikes
+                                    Bicicletas
                                     <i class="fas fa-angle-left right"></i>
                                   </p>
                                 </a>

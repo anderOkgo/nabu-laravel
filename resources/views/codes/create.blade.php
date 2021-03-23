@@ -40,7 +40,7 @@
 
         <div class="row">
           <div class="form-group col-md-6">
-          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="submit" class="btn btn-primary">Generar</button>
           <button type="reset" class="btn btn-danger">Cancelar</button>
           </div>
         </div>
