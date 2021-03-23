@@ -16,7 +16,8 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('verified'); 
+        $this->middleware('verified');
+        
     }
     /**
      * Display a listing of the resource.
@@ -25,6 +26,10 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        if(Auth::user()->tieneRole()[0] !=="administrador")
+        {
+            abort(403);
+        }
         if($request->ajax()) {
             $users = User::all();
 
@@ -57,6 +62,10 @@ class UserController extends Controller
      */
     public function create()
     {
+        if(Auth::user()->tieneRole()[0] !=="administrador")
+        {
+            abort(403);
+        }
         $roles = Role::all();
         return view('usuarios.create', ['roles' => $roles]);
     }
@@ -69,6 +78,10 @@ class UserController extends Controller
      */
     public function store(UserFormRequest $request)
     {
+        if(Auth::user()->tieneRole()[0] !=="administrador")
+        {
+            abort(403);
+        }
         $usuario           = new User();
         $usuario->name     = request('name');
         $usuario->email    = request('email');
@@ -94,6 +107,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        if(Auth::user()->tieneRole()[0] !=="administrador")
+        {
+            abort(403);
+        }
         return view('usuarios.show', ['user' => User::findOrFail($id)]);
     }
 
@@ -105,9 +122,15 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        $roles =  Role::all();
-        return view('usuarios.edit', ['user' => $user, 'roles' => $roles ]);
+        if(Auth::user()->tieneRole()[0] =="administrador" || Auth::user()->id == $id)
+        {
+            $user = User::findOrFail($id);
+            $roles =  Role::all();
+            return view('usuarios.edit', ['user' => $user, 'roles' => $roles ]);
+            
+        } else {
+            abort(403);
+        }
     }
 
     /**
@@ -119,7 +142,10 @@ class UserController extends Controller
      */
     public function update(UserEditFormRequest $request, $id)
     {
-        $this->validate(request(), ['email' => ['required', 'email', 'max:255', 'unique:users,email,'. $id] ]);
+
+        if(Auth::user()->tieneRole()[0] =="administrador" || Auth::user()->id == $id)
+        {
+            $this->validate(request(), ['email' => ['required', 'email', 'max:255', 'unique:users,email,'. $id] ]);
         $usuario        = User::findOrFail($id);
         $usuario->name  = $request->get('name');
         $usuario->email = $request->get('email');
@@ -152,6 +178,12 @@ class UserController extends Controller
         } else {
             return redirect('/usuarios');
         }
+            
+        } else {
+            abort(403);
+        }
+
+       
     }
 
     /**
@@ -162,6 +194,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        if(Auth::user()->tieneRole()[0] !=="administrador")
+        {
+            abort(403);
+        }
         $usuario = User::findOrFail($id);
         $usuario->delete();
         return redirect('/usuarios');

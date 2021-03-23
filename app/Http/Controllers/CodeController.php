@@ -19,6 +19,10 @@ class CodeController extends Controller
      */
     public function index(Request $request)
     {
+        if(Auth::user()->tieneRole()[0] !=="administrador")
+        {
+            abort(403);
+        }
         if($request->ajax()) {
             $codes = Code::all();
             //dd($codes);
@@ -45,6 +49,10 @@ class CodeController extends Controller
      */
     public function create()
     {
+        if(Auth::user()->tieneRole()[0] !=="administrador")
+        {
+            abort(403);
+        }
         $roles = Role::all();
         return view('codes.create', ['roles' => $roles]);
     }
@@ -57,6 +65,10 @@ class CodeController extends Controller
      */
     public function store(Request $request)
     {
+        if(Auth::user()->tieneRole()[0] !=="administrador")
+        {
+            abort(403);
+        }
         for($i = 1; $i <= request('cantidad'); $i++ ) {
             $code   = new Code();
             $codigo = $this->generarCodigo(8);
@@ -124,6 +136,10 @@ class CodeController extends Controller
      */
     public function destroy($id)
     {
+        if(Auth::user()->tieneRole()[0] !=="administrador")
+        {
+            abort(403);
+        }
         $code = Code::findOrFail($id);
         $code->delete();
         return redirect('/codes');
