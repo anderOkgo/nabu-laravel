@@ -43,7 +43,7 @@ Esta información puede ser eliminada borrando datos de navegación del navegado
 
 
       if(localStorage.getItem('pass') == undefined && localStorage.getItem('tel') == undefined) {
-        localStorage.setItem("pass", '');
+        localStorage.setItem("pass", '0000');
         localStorage.setItem("tel", '');
       }
       var clipboard = new ClipboardJS('#btn_generate');

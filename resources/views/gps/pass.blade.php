@@ -44,6 +44,11 @@
             
         });
 
+        $("input").keyup(function(){
+            genrete_comand();
+            
+        });
+
         $("input").blur(function(){
             genrete_comand();
             
@@ -58,7 +63,7 @@
         });
 
         function genrete_comand() {
-            $('#nue').val( '777' +$('#pass').val() + $('#new_pass').val());
+            $('#nue').val( '777'  + $('#new_pass').val() + $('#pass').val());
         }
 
     });

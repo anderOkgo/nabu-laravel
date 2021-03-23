@@ -48,6 +48,11 @@
             
         });
 
+        $("input").keyup(function(){
+            genrete_comand();
+            
+        });
+
         $("input").blur(function(){
             genrete_comand();
             

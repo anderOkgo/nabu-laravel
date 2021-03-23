@@ -40,6 +40,11 @@
             
         });
 
+        $("input, select").keyup(function(){
+            genrete_comand();
+            
+        });
+
         $("input, select").blur(function(){
             genrete_comand();
             
