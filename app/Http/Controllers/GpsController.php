@@ -23,6 +23,9 @@ class GpsController extends Controller
             case "ubicacion":
                 return view('gps.ubicacion', ['id' => $id] );
                 break;
+            case "apagarveh":
+                return view('gps.apagarveh', ['id' => $id] );
+                break;
             case "config_geocerca":
                 return view('gps.config_geocerca', ['id' => $id] );
                 break;

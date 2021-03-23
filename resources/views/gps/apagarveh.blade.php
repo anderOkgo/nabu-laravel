@@ -3,7 +3,7 @@
 
 @section('content')
 
-<h2 class="mx-auto">Activar Geocerca</h2>
+<h2 class="mx-auto">Apagar o Encender Vehiculo</h2>
 <hr><br>
 <div class="container col-md-6 mx-auto">
 
@@ -14,8 +14,8 @@
       <div class="form-group">
         <label for="exampleFormControlSelect1">Cambiar Estado</label>
         <select class="form-control" id="exampleFormControlSelect1">
-          <option id="1">Encendido</option>
-          <option id="2">Apagado</option>
+          <option id="1">Encender</option>
+          <option id="2">Apagar</option>
         </select>
       </div>
 
@@ -47,11 +47,6 @@
             
         });
 
-        $("input, select").keyup(function(){
-            genrete_comand();
-            
-        });
-
         $("input, select").blur(function(){
             genrete_comand();
             
@@ -67,11 +62,10 @@
         });
 
         function genrete_comand() {
-          if($('#exampleFormControlSelect1').val() == "Encendido") {
-          com = '211';
-        } else {
-          com = '210';
-
+          if($('#exampleFormControlSelect1').val() == "Encender") {
+          com = '941';
+          } else {
+          com = '940';
         }
         
             $('#nue').val( com + $('#pass').val() );
