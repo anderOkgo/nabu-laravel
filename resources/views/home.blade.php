@@ -88,7 +88,7 @@
         </div>
         <!-- /.row -->
         <!-- Main row -->
-        <div class="row">
+        {{-- <div class="row">
             <!-- Left col -->
             <section class="col-lg-12 connectedSortable">
                 <!-- TO DO List -->
@@ -430,7 +430,7 @@
                 <!--/.direct-chat -->
             </section> --}}
             <!-- right col -->
-        </div>
+        </div> --}}
         <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
 </section>
