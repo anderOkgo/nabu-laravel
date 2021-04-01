@@ -88,20 +88,20 @@
         //$('#f-input').fileinput();
         $('#f-input').fileinput({
         theme: 'fas',
-        language: 'fr',
+        language: 'es',
         uploadUrl: '#',
         initialPreview: [
-          "<img src='/imagenes/{{ $bike->photo_path }}' class='file-preview-image' alt='Desert' title='Desert'>"
+          "<img src='{{$bike->getUrlPathAttribute('photo_path')}}' class='file-preview-image' alt='Desert' title='Desert'>"
         ],
         allowedFileExtensions: ['jpg', 'png', 'gif']
     });
 
     $('#factura').fileinput({
         theme: 'fas',
-        language: 'fr',
+        language: 'es',
         uploadUrl: '#',
         initialPreview: [
-          "<img src='/imagenes/{{ $bike->invoice_path }}' class='file-preview-image' alt='Desert' title='Desert'>"
+          "<img src='{{$bike->getUrlPathAttribute('invoice_path')}}' class='file-preview-image' alt='Desert' title='Desert'>"
         ],
         allowedFileExtensions: ['jpg', 'png', 'gif']
     });

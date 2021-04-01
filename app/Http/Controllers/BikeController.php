@@ -52,14 +52,15 @@ class BikeController extends Controller
         $bici->user_id   = request('usuario');
         if ($request->hasFile('factura')) {
             $file = $request->factura;
-            $file->move(public_path() . '/imagenes', $file->getClientOriginalName());
-            $bici->invoice_path = $file->getClientOriginalName();
+            $path = $request->factura->store('facturas', 'public');
+            //$file->move(public_path() . '/imagenes', $file->getClientOriginalName());
+            $bici->invoice_path = $path;
         }
 
         if ($request->hasFile('foto')) {
             $file = $request->foto;
-            $file->move(public_path() . '/imagenes', $file->getClientOriginalName());
-            $bici->photo_path = $file->getClientOriginalName();
+            $path = $request->foto->store('fotos', 'public');
+            $bici->photo_path = $path;
         }
         
         $bici->save();
@@ -109,14 +110,15 @@ class BikeController extends Controller
         
         if ($request->hasFile('factura')) {
             $file = $request->factura;
-            $file->move(public_path() . '/imagenes', $file->getClientOriginalName());
-            $bici->invoice_path = $file->getClientOriginalName();
+            $path = $request->factura->store('facturas', 'public');
+            //$file->move(public_path() . '/imagenes', $file->getClientOriginalName());
+            $bici->invoice_path = $path;
         }
 
         if ($request->hasFile('foto')) {
             $file = $request->foto;
-            $file->move(public_path() . '/imagenes', $file->getClientOriginalName());
-            $bici->photo_path = $file->getClientOriginalName();
+            $path = $request->foto->store('fotos', 'public');
+            $bici->photo_path = $path;
         }
         
         $bici->update();
