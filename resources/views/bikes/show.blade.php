@@ -17,39 +17,34 @@
       @endif
     </div>
   </div>
-  <form action="{{ route('bikes.update', $bike->id) }}" method ="POST" enctype="multipart/form-data">
+  <form  method ="POST" enctype="multipart/form-data">
     @method('PATCH')
     @csrf
 
     <div class="row">
       <div class="form-group col-md-6">
         <label>Color</label>
-        <input type="text" name="color" value="{{$bike->color}}" class="form-control" placeholder="Nombre">
+        <p>{{$bike->color}}</p>
       </div>
       <div class="form-group col-md-6">
         <label>Marca</label>
-        <input type="marca" name="marca" value="{{$bike->brand}}" class="form-control" placeholder="marca">
+        <p>{{$bike->color}}</p>
       </div>
     </div>
 
     <div class="row">
       <div class="form-group col-md-6">
         <label>Serial</label>
-        <input type="text" name="serial" value="{{$bike->serial}}" class="form-control" placeholder="serial">
+        <p>{{$bike->serial}}</p>
       </div>
 
       <div class="form-group col-md-6">
         <label for="usuario">Usuario</label>
-        <select name="usuario" id="usuario" class="form-control">
-          <option selected disabled>Elige un usuario para esta Bicicleta...</option>
           @foreach($users as $user)
-              @if( $user->id ==  str_replace(array('[', ']', '"'), '', $user->tieneBike() ) )
-              <option value="{{$user->id}}" selected>{{$user->name}}</option>
-              @else
-              <option value="{{$user->id}}">{{ $user->name }}</option>
+              @if( $user->id ==  $bike->user_id )
+              <p>{{$user->name}}</p>
               @endif
-              @endforeach
-        </select>
+            @endforeach
       </div>
 
       
@@ -71,12 +66,7 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="form-group col-md-6">
-      <button type="submit" class="btn btn-primary">Guardar</button>
-      <button type="reset" class="btn btn-danger">Cancelar</button>
-      </div>
-    </div>
+    
   <form>
 
 </div>
@@ -95,6 +85,10 @@
         language: 'es',
         uploadUrl: '#',
         showUpload: false,
+        showBrowse: false,
+        showClose: false,
+        showRemove: false,
+        showCaption: false,
         initialPreview: [
           "<img src='{{$bike->getUrlPathAttribute('photo_path')}}' class='file-preview-image' alt='Desert' title='Desert'>"
         ],
@@ -106,6 +100,10 @@
         language: 'es',
         uploadUrl: '#',
         showUpload: false,
+        showBrowse: false,
+        showClose: false,
+        showRemove: false,
+        showCaption: false,
         initialPreview: [
           "<img src='{{$bike->getUrlPathAttribute('invoice_path')}}' class='file-preview-image' alt='Desert' title='Desert'>"
         ],
@@ -117,6 +115,10 @@
         language: 'es',
         uploadUrl: '#',
         showUpload: false,
+        showBrowse: false,
+        showClose: false,
+        showRemove: false,
+        showCaption: false,
         initialPreview: [
           "<img src='{{$bike->code_path}}' class='file-preview-image' alt='Desert' title='Desert'>"
         ],

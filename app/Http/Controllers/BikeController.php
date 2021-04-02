@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Bike;
 use App\User;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\BikeFormRequest;
@@ -62,9 +63,14 @@ class BikeController extends Controller
             $path = $request->foto->store('fotos', 'public');
             $bici->photo_path = $path;
         }
+
+       
         
         $bici->save();
-
+        $qr = url('bikes') .'/'. $bici->id;
+        QrCode::format('png')->size(500)->generate($qr , '../public/qrcodes/' . $bici->id . '.png');
+        $bici->code_path = '/qrcodes/' . $bici->id . '.png';
+        $bici->update();
         return redirect('/bikes');
     }
 
@@ -76,7 +82,9 @@ class BikeController extends Controller
      */
     public function show($id)
     {
-        //
+        $bike  = Bike::findOrFail($id);
+        $users =  User::all();
+        return view('bikes.show', ['bike' => $bike, 'users' => $users ]);
     }
 
     /**
