@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/imagenes
+/public/qrcodes/
 /public/storage
 /storage/*.key
 /vendor
