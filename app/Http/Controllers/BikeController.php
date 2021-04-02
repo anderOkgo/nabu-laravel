@@ -68,7 +68,7 @@ class BikeController extends Controller
         
         $bici->save();
         $qr = url('bikes') .'/'. $bici->id;
-        QrCode::format('png')->size(500)->generate($qr , '../public/qrcodes/' . $bici->id . '.png');
+        QrCode::format('png')->size(500)->generate($qr , public_path() . '/qrcodes/' . $bici->id . '.png');
         $bici->code_path = '/qrcodes/' . $bici->id . '.png';
         $bici->update();
         return redirect('/bikes');
