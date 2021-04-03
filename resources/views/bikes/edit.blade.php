@@ -43,7 +43,7 @@
         <select name="usuario" id="usuario" class="form-control">
           <option selected disabled>Elige un usuario para esta Bicicleta...</option>
           @foreach($users as $user)
-              @if( $user->id ==  str_replace(array('[', ']', '"'), '', $user->tieneBike() ) )
+              @if( $user->id ==  $bike->user_id )
               <option value="{{$user->id}}" selected>{{$user->name}}</option>
               @else
               <option value="{{$user->id}}">{{ $user->name }}</option>
@@ -117,6 +117,10 @@
         language: 'es',
         uploadUrl: '#',
         showUpload: false,
+        showBrowse: false,
+        showClose: false,
+        showRemove: false,
+        showCaption: false,
         initialPreview: [
           "<img src='{{$bike->code_path}}' class='file-preview-image' alt='Desert' title='Desert'>"
         ],

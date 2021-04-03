@@ -367,7 +367,7 @@
                             </li>
                             @endif
 
-                            @if(Auth::user()->tieneRole()[0] =="administrador" || Auth::user()->tieneRole()[0] == "bikes")  
+                            @if(Auth::user()->tieneRole()[0] =="administrador" || Auth::user()->tieneRole()[0] == "bikes" )  
                             <li class="nav-item">
                                 <a href="{{ url('bikes.index')}}" class="{{ Request::path() === 'bikes' ? 'nav-link active' : 'nav-link' }}">
                                   <i class="nav-icon fas fa-bicycle"></i>

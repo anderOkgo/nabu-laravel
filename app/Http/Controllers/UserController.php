@@ -146,38 +146,38 @@ class UserController extends Controller
         if(Auth::user()->tieneRole()[0] =="administrador" || Auth::user()->id == $id)
         {
             $this->validate(request(), ['email' => ['required', 'email', 'max:255', 'unique:users,email,'. $id] ]);
-        $usuario        = User::findOrFail($id);
-        $usuario->name  = $request->get('name');
-        $usuario->email = $request->get('email');
+            $usuario        = User::findOrFail($id);
+            $usuario->name  = $request->get('name');
+            $usuario->email = $request->get('email');
 
-        if ($request->hasFile('imagen')) {
-            $file = $request->imagen;
-            $file->move(public_path() . '/imagenes', $file->getClientOriginalName());
-            $usuario->imagen = $file->getClientOriginalName();
-        }
+            if ($request->hasFile('imagen')) {
+                $file = $request->imagen;
+                $file->move(public_path() . '/imagenes', $file->getClientOriginalName());
+                $usuario->imagen = $file->getClientOriginalName();
+            }
 
-        $pass = $request->get('password');
-        if ($pass != null){
-            $usuario->password = bcrypt($request->get('password'));
-        } else {
-            unset($usuario->password);
-        }
+            $pass = $request->get('password');
+            if ($pass != null){
+                $usuario->password = bcrypt($request->get('password'));
+            } else {
+                unset($usuario->password);
+            }
 
-        $role = $usuario->roles;
-        if (count($role) > 0) {
-            $role_id = $role[0]->id;
-            User::find($id)->roles()->updateExistingPivot($role_id, ['role_id' => $request->get('rol')]);
-        } else {
-            $usuario->asignarRole($request->get('rol'));
-        }
+            $role = $usuario->roles;
+            if (count($role) > 0) {
+                $role_id = $role[0]->id;
+                User::find($id)->roles()->updateExistingPivot($role_id, ['role_id' => $request->get('rol')]);
+            } else {
+                $usuario->asignarRole($request->get('rol'));
+            }
 
-        $usuario->update();
+            $usuario->update();
 
-        if(Auth::user()->tieneRole()[0] == "gps") {
-            return redirect('/');
-        } else {
-            return redirect('/usuarios');
-        }
+            if(Auth::user()->tieneRole()[0] == "gps") {
+                return redirect('/');
+            } else {
+                return redirect('/usuarios');
+            }
             
         } else {
             abort(403);

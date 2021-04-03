@@ -46,9 +46,9 @@
 
         <div class="row">
 
-          @can('gps')
+          @if(Auth::user()->tieneRole()[0] !== "administrador" ) 
           <div class="d-none">
-          @endcan
+          @endif
             <div class="form-group col-md-6">
               <label for="rol">Rol</label>
               <select name="rol" class="form-control">
@@ -63,9 +63,9 @@
               </select>
             </div>
 
-            @can('gps')
+            @if(Auth::user()->tieneRole()[0] !== "administrador" ) 
           </div> 
-            @endcan
+            @endif
               
           
           

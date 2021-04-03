@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Bike;
 use App\User;
+use Auth;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 use Illuminate\Http\Request;
@@ -17,8 +18,29 @@ class BikeController extends Controller
      */
     public function index(Request $request)
     {
+        //bike_visor
+        //dd(Auth::user()->tieneRole()[0] !=="administrador");
+
+        if(Auth::user()->tieneRole()[0] !== "administrador" )
+        {
+            if (Auth::user()->tieneRole()[0] !=="bikes") {
+
+                abort(403);
+            }
+        }
+
+        if(Auth::user()->tieneRole()[0] == "bikes")
+        {
+            $Bike =     Bike::all();
+            $bikes = $Bike->where('user_id', Auth::user()->id);
+        } else {
+
+            $bikes = Bike::select('*');
+        }
+
+
         if($request->ajax()) {
-            return datatables()->of(Bike::select('*'))
+            return datatables()->of($bikes)
             ->addColumn('actions', 'bikes.actions')
             ->rawColumns(['actions'])
             ->addIndexColumn()
@@ -34,7 +56,21 @@ class BikeController extends Controller
      */
     public function create()
     {
-        $users = User::all();
+        
+        if(Auth::user()->tieneRole()[0] == "bikes")
+        {
+            $users =  User::all()->where('id', Auth::user()->id);
+
+        } else {
+            if(Auth::user()->tieneRole()[0] == "administrador") {
+
+                $users =  User::all();
+
+            } else {
+                abort(403);
+            }
+
+        }
         return view('bikes.create', ['usuarios' => $users]);
     }
 
@@ -83,7 +119,31 @@ class BikeController extends Controller
     public function show($id)
     {
         $bike  = Bike::findOrFail($id);
-        $users =  User::all();
+        //$users =  User::all();
+        if(Auth::user()->tieneRole()[0] == "bikes")
+        {
+            if(Auth::user()->id == Bike::select('user_id')->where('id', $id)->get()->pluck('user_id')[0]  ) {
+
+                $users =  User::all()->where('id', Auth::user()->id);
+            }
+            else {
+                if (Auth::user()->tieneRole()[0] == "bike_visor") {
+                    $users =  User::all()->where('id', Auth::user()->id);
+                }
+                abort(403);
+            }
+
+        } else {
+
+            if(Auth::user()->tieneRole()[0] == "administrador" || Auth::user()->tieneRole()[0] == "bike_visor") {
+
+                $users =  User::all();
+
+            } else {
+                abort(403);
+            }
+
+        }
         return view('bikes.show', ['bike' => $bike, 'users' => $users ]);
     }
 
@@ -96,7 +156,28 @@ class BikeController extends Controller
     public function edit($id)
     {
         $bike  = Bike::findOrFail($id);
-        $users =  User::all();
+        if(Auth::user()->tieneRole()[0] == "bikes")
+        {
+            if(Auth::user()->id ==Bike::select('user_id')->where('id', $id)->get()->pluck('user_id')[0] ) {
+
+                $users =  User::all()->where('id', Auth::user()->id);
+            }
+            else {
+                abort(403);
+            }
+
+        } else {
+
+            if(Auth::user()->tieneRole()[0] == "administrador") {
+
+                $users =  User::all();
+
+            } else {
+                abort(403);
+            }
+
+        }
+       
         return view('bikes.edit', ['bike' => $bike, 'users' => $users ]);
         
     }

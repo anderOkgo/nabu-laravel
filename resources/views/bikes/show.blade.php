@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6">
-      <h2>Actualizar Bicicleta</h2>
+      <h2>Datos de la Bicicleta</h2>
       @if ($errors->any())
         <div class="alert alert-danger">
           <ul>

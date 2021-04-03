@@ -82,14 +82,14 @@
 
         $('#f-input').fileinput({
           theme: 'fas',
-          language: 'en',
+          language: 'es',
           uploadUrl: '#',
           allowedFileExtensions: ['jpg', 'png', 'gif']
         });
 
         $('#factura').fileinput({
             theme: 'fas',
-            language: 'en',
+            language: 'es',
             uploadUrl: '#',
             allowedFileExtensions: ['jpg', 'png', 'gif']
         });
