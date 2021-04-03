@@ -84,6 +84,10 @@ class UserController extends Controller
         }
         $usuario           = new User();
         $usuario->name     = request('name');
+        $usuario->type_doc     = request('tipo_dni');
+        $usuario->num_doc     = request('dni');
+        $usuario->dir     = request('direccion');
+        $usuario->cell     = request('celular');
         $usuario->email    = request('email');
         $usuario->password = bcrypt(request('password'));
         if ($request->hasFile('imagen')) {
@@ -147,6 +151,10 @@ class UserController extends Controller
         {
             $this->validate(request(), ['email' => ['required', 'email', 'max:255', 'unique:users,email,'. $id] ]);
             $usuario        = User::findOrFail($id);
+            $usuario->type_doc     = request('tipo_dni');
+            $usuario->num_doc     = request('dni');
+            $usuario->dir     = request('direccion');
+            $usuario->cell     = request('celular');
             $usuario->name  = $request->get('name');
             $usuario->email = $request->get('email');
 

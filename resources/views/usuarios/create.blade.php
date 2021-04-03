@@ -33,6 +33,32 @@
 
         <div class="row">
           <div class="form-group col-md-6">
+            <label >Tipo Identificación</label>
+            <select name="tipo_dni" class="form-control">
+              <option selected disabled>Elige un tipo de documento...</option>
+              <option value="CC">Cédula</option>
+              <option value="TI">Targeta de Identidad</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label >Número de Identificación</label>
+            <input type="text" name="dni" class="form-control" placeholder="Número de Identificación">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label >Célular</label>
+            <input type="text" name="celular" class="form-control" placeholder="Célular">
+          </div>
+          <div class="form-group col-md-6">
+            <label >Dirección</label>
+            <input type="text" name="direccion" class="form-control" placeholder="Dirección">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-6">
             <label >Contraseña</label>
             <input type="password" name="password" class="form-control" placeholder="Contraseña">
           </div>

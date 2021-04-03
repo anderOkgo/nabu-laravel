@@ -34,6 +34,37 @@
 
         <div class="row">
           <div class="form-group col-md-6">
+            <label >Tipo Identificación</label>
+            <select name="tipo_dni" class="form-control">
+              <option selected disabled>Elige un tipo de documento...</option>
+              @if( $user->type_doc == "CC" )
+              <option value="CC" selected>Cédula</option>
+              <option value="TI">Targeta de Identidad</option>
+              @else
+              <option value="CC">Cédula</option>
+              <option value="TI" selected>Targeta de Identidad</option>
+              @endif
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label >Número de Identificación</label>
+            <input type="text" name="dni" value="{{$user->num_doc}}" class="form-control" placeholder="Número de Identificación">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label >Célular</label>
+            <input type="text" name="celular" value="{{$user->cell}}" class="form-control" placeholder="Célular">
+          </div>
+          <div class="form-group col-md-6">
+            <label >Dirección</label>
+            <input type="text" name="direccion" value="{{$user->dir}}" class="form-control" placeholder="Dirección">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-6">
             <label >Contraseña <span class="small">(Opcional)</span></label>
             <input type="password" name="password" class="form-control" placeholder="Contraseña">
           </div>

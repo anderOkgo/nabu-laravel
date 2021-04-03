@@ -49,6 +49,14 @@
 
     </div>
 
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label>Tipo</label>
+        <input type="text" name="tipo" class="form-control" placeholder="Tipo">
+      </div>
+
+    </div>
+
 
     <div class="row">
       <div class="form-group col-md-6">

@@ -3,14 +3,21 @@
 namespace App\Http\Controllers;
 use App\Bike;
 use App\User;
+use App\Role;
 use Auth;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
-
+use Yajra\DataTables\DataTables;
 use Illuminate\Http\Request;
 use App\Http\Requests\BikeFormRequest;
 
 class BikeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('verified');
+        
+    }
     /**
      * Display a listing of the resource.
      *
@@ -86,7 +93,8 @@ class BikeController extends Controller
         $bici->color    = request('color');
         $bici->brand    = request('marca');
         $bici->serial   = request('serial');
-        $bici->user_id   = request('usuario');
+        $bici->type     = request('tipo');
+        $bici->user_id  = request('usuario');
         if ($request->hasFile('factura')) {
             $file = $request->factura;
             $path = $request->factura->store('facturas', 'public');
@@ -195,6 +203,7 @@ class BikeController extends Controller
         $bici->color    = request('color');
         $bici->brand    = request('marca');
         $bici->serial   = request('serial');
+        $bici->type     = request('tipo');
         $bici->user_id  = request('usuario');
         
         if ($request->hasFile('factura')) {
