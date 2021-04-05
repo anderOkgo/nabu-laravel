@@ -23,12 +23,12 @@
         <div class="row">
           <div class="form-group col-md-6">
             <label>Cantidad</label>
-            <input type="number" name="cantidad" class="form-control"  placeholder="Por favor digite la cantidad a generar" requiredvalue ="">
+            <input type="number" name="cantidad" class="form-control"  placeholder="Por favor digite la cantidad a generar" required>
           </div>
 
           <div class="form-group col-md-6">
             <label for="rol">Rol</label>
-            <select name="rol" required class="form-control" required>
+            <select name="rol"  class="form-control" required>
               <option value="" selected disabled>Elige un rol para este usuario...</option>
               @foreach($roles as $role)
               <option value="{{$role->id}}">{{$role->name}}</option>
