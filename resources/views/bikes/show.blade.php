@@ -28,7 +28,7 @@
       </div>
       <div class="form-group col-md-6">
         <label>Marca</label>
-        <p>{{$bike->color}}</p>
+        <p>{{$bike->brand}}</p>
       </div>
     </div>
 
@@ -47,6 +47,10 @@
             @endforeach
       </div>
 
+      <div class="form-group col-md-6">
+        <label>Serial</label>
+        <p>{{$bike->type}}</p>
+      </div>
       
     </div>
 
