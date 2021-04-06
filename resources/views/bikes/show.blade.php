@@ -48,7 +48,7 @@
       </div>
 
       <div class="form-group col-md-6">
-        <label>Serial</label>
+        <label>Tipo</label>
         <p>{{$bike->type}}</p>
       </div>
       
