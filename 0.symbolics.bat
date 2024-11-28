@@ -1,1 +1,0 @@
-G:/My drive/Documents/Variant/Notes/Dev/Codes/Commands/FTPSync/nabu-laravel/0.symbolics.bat
