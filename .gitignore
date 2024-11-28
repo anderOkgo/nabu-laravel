@@ -14,3 +14,7 @@ npm-debug.log
 yarn-error.log
 .editorconfig
 .idea
+
+# settings and release folders
+
+0.symbolics.bat
